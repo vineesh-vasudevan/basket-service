@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Basket.Contracts\Basket.Contracts.csproj" />
+    <ProjectReference Include="..\Basket.Domain\Basket.Domain.csproj" />
+    <ProjectReference Include="..\Basket.Shared\Basket.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

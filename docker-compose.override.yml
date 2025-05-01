@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+
+  basketdb:
+    container_name: basketdb
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=BasketDb
+      - MYSQL_USER=basketuser
+      - MYSQL_PASSWORD=basketpass    
+    ports:
+        - "3306:3306"
+    volumes:
+      - mysql_basket:/var/lib/mysql  
+  
+  distributedcache:
+   container_name: distributedcache
+   restart: always
+   ports:
+      - "6379:6379"
+
+  basket.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__BasketDb=Server=basketdb;Port=3306;Database=BasketDb;User=basketuser;Password=basketpass;SslMode=Preferred;
+      - ConnectionStrings__Redis=distributedcache:6379
+    depends_on:
+      - basketdb
+      - distributedcache
+    ports:
+      - "6001:8080"
+      - "6061:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

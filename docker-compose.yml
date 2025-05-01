@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  basketdb:
+    image: mysql:8.0
+
+  distributedcache:
+    image: redis
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: src/Basket.Api/Dockerfile
+
+volumes:
+  mysql_basket:    

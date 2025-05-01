@@ -1,0 +1,70 @@
+﻿using Basket.Domain.Entities;
+using Basket.Domain.Exceptions;
+using Basket.Domain.Repositories;
+using Basket.Shared.CQRS;
+using MediatR;
+
+namespace Basket.Application.BasketItems.CreateBasketItem
+{
+    public class CreateBasketItemHandler
+        (IBasketRepository basketRepository, IUnitOfWork unitOfWork)
+            : ICommandHandler<CreateBasketItemCommand, Guid>
+    {
+        public async Task<Guid> Handle(CreateBasketItemCommand command, CancellationToken cancellationToken)
+        {
+            var maybeBasket = await basketRepository.GetBasket(command.BasketId, cancellationToken);
+
+            if (maybeBasket.HasNoValue)
+            {
+                throw new BasketNotFoundException(command.BasketId);
+            }
+
+            var basket = maybeBasket.Value;
+            await unitOfWork.BeginTransactionAsync(cancellationToken);
+            try
+            {
+                var basketItem = BasketItem.Create(
+                    basket.Id,
+                    Guid.NewGuid(),
+                    command.Request.ProductId,
+                    command.Request.ProductName,
+                    command.Request.Color,
+                    command.Request.Price,
+                    command.Request.Quantity
+                );
+
+                basketRepository.Update(basket);
+                await basketRepository.AddBasketItemAsync(basketItem, cancellationToken);
+
+                await unitOfWork.SaveChangesAsync(cancellationToken);
+                await unitOfWork.CommitAsync(cancellationToken);
+                return basketItem.Id;
+            }
+            catch
+            {
+                await unitOfWork.RollbackAsync(cancellationToken);
+                throw;
+            }
+            //var basket = await basketRepository.GetBasket(command.BasketId, cancellationToken);
+            //if (basket.HasNoValue)
+            //{
+            //    throw new BasketNotFoundException(command.BasketId);
+            //}
+
+            //var basketItem = BasketItem.Create(
+            //    basket.Value.Id,
+            //    Guid.NewGuid(),
+            //    command.Request.ProductId,
+            //    command.Request.ProductName,
+            //    command.Request.Color,
+            //    command.Request.Price,
+            //    command.Request.Quantity
+            //);
+
+            //basket.Value.AddItem(basketItem);
+
+            //await basketRepository.CreateBasketItem(basket.Value, basketItem, cancellationToken);
+            //return basketItem.Id;
+        }
+    }
+}
