@@ -2,10 +2,9 @@
 {
     public class BasketItemCreateRequestDto
     {
-        public Guid ProductId { get; init; }
+        public string ProductCode { get; init; } = default!;
         public int Quantity { get; init; }
         public string Color { get; init; } = default!;
         public decimal Price { get; init; }
-        public string ProductName { get; init; } = default!;
     }
 }

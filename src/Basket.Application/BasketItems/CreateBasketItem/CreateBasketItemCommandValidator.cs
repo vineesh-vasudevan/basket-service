@@ -15,12 +15,8 @@ namespace Basket.Application.BasketItems.CreateBasketItem
             When(x => x.Request != null, () =>
             {
 
-                RuleFor(x => x.Request.ProductId)
-                .NotEmpty().WithMessage("ProductId is required.");
-
-                RuleFor(x => x.Request.ProductName)
-                    .NotEmpty().WithMessage("ProductName is required.")
-                    .MaximumLength(200).WithMessage("ProductName must not exceed 200 characters.");
+                RuleFor(x => x.Request.ProductCode)
+                .NotEmpty().WithMessage("ProductCode is required.");
 
                 RuleFor(x => x.Request.Color)
                     .NotEmpty().WithMessage("Color is required.")

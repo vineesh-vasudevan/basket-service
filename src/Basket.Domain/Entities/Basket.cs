@@ -39,7 +39,7 @@ namespace Basket.Domain.Entities
 
         public void AddItem(BasketItem basketItem)
         {
-            var existingItem = _items.FirstOrDefault(i => i.ProductId == basketItem.ProductId && i.Color == basketItem.Color);
+            var existingItem = _items.FirstOrDefault(i => i.ProductCode == basketItem.ProductCode && i.Color == basketItem.Color);
             if (existingItem != null)
             {
                 existingItem.AddQuantity(basketItem.Quantity);

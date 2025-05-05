@@ -26,8 +26,7 @@ namespace Basket.Application.BasketItems.CreateBasketItem
                 var basketItem = BasketItem.Create(
                     basket.Id,
                     Guid.NewGuid(),
-                    command.Request.ProductId,
-                    command.Request.ProductName,
+                    command.Request.ProductCode,
                     command.Request.Color,
                     command.Request.Price,
                     command.Request.Quantity
@@ -45,26 +44,6 @@ namespace Basket.Application.BasketItems.CreateBasketItem
                 await unitOfWork.RollbackAsync(cancellationToken);
                 throw;
             }
-            //var basket = await basketRepository.GetBasket(command.BasketId, cancellationToken);
-            //if (basket.HasNoValue)
-            //{
-            //    throw new BasketNotFoundException(command.BasketId);
-            //}
-
-            //var basketItem = BasketItem.Create(
-            //    basket.Value.Id,
-            //    Guid.NewGuid(),
-            //    command.Request.ProductId,
-            //    command.Request.ProductName,
-            //    command.Request.Color,
-            //    command.Request.Price,
-            //    command.Request.Quantity
-            //);
-
-            //basket.Value.AddItem(basketItem);
-
-            //await basketRepository.CreateBasketItem(basket.Value, basketItem, cancellationToken);
-            //return basketItem.Id;
         }
     }
 }

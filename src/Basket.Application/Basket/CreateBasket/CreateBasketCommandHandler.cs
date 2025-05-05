@@ -22,8 +22,7 @@ namespace Basket.Application.Basket.CreateBasket
                 var basketItem = BasketItem.Create(
                     basket.Id,
                     Guid.NewGuid(),
-                    item.ProductId,
-                    item.ProductName,
+                    item.ProductCode,
                     item.Color,
                     item.Price,
                     item.Quantity

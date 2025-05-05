@@ -18,14 +18,13 @@ namespace Basket.Infrastructure.Mappers
                 BasketItems = basket.BasketItems.Select(item => new BasketItemDto
                 {
                     Id = item.Id,
-                    ProductId = item.ProductId,
+                    ProductCode = item.ProductCode,
                     Color = item.Color,
                     Quantity = item.Quantity,
                     TotalPrice = item.TotalPrice,
                     IsDeleted = item.IsDeleted,
                     Price = item.Price,
                     BasketId = item.Id,
-                    ProductName = item.ProductName,                    
                 }).ToList()
             };
         }
@@ -36,7 +35,7 @@ namespace Basket.Infrastructure.Mappers
 
             foreach (var item in dto.BasketItems)
             {
-                var basketItem = BasketItem.Create(basket.Id, item.Id, item.ProductId, item.ProductName, item.Color, item.Price, item.Quantity);
+                var basketItem = BasketItem.Create(basket.Id, item.Id, item.ProductCode, item.Color, item.Price, item.Quantity);
                 basket.AddItem(basketItem);
             }
 

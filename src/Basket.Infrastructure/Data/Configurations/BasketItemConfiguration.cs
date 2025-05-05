@@ -10,10 +10,7 @@ namespace Basket.Infrastructure.Data.Configurations
         {
             builder.HasKey(bi => bi.Id);
 
-            builder.Property(bi => bi.ProductId)
-                   .IsRequired();
-
-            builder.Property(bi => bi.ProductName)
+            builder.Property(bi => bi.ProductCode)
                    .IsRequired();
 
             builder.Property(bi => bi.Color)
