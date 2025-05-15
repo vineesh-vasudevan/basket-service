@@ -24,14 +24,14 @@ namespace Basket.Application.BasketItems.UpdateBasketItem
 
             var basketItem = maybeItem.Value;
 
-            basket.UpdateItem(basketItem.Id, command.Quantity);          
+            basket.UpdateItem(basketItem.Id, command.Quantity);
 
             await unitOfWork.BeginTransactionAsync(cancellationToken);
 
             try
             {
                 basketRepository.Update(basket);
-                basketRepository.UpdateBasketItem(basketItem); //TODO to remove 
+                basketRepository.UpdateBasketItem(basketItem); //TODO to remove
                 await unitOfWork.SaveChangesAsync(cancellationToken);
                 await unitOfWork.CommitAsync(cancellationToken);
                 return mapper.Map<BasketDto>(basket);

@@ -1,8 +1,8 @@
 ﻿using Basket.Domain.Entities;
+using Basket.Domain.Enum;
 using Basket.Domain.Exceptions;
 using Basket.Domain.Repositories;
 using Basket.Shared.CQRS;
-using MediatR;
 
 namespace Basket.Application.BasketItems.CreateBasketItem
 {
@@ -29,7 +29,8 @@ namespace Basket.Application.BasketItems.CreateBasketItem
                     command.Request.ProductCode,
                     command.Request.Color,
                     command.Request.Price,
-                    command.Request.Quantity
+                    command.Request.Quantity,
+                    BasketItemStatus.FromName(command.Request.Status.ToString())
                 );
 
                 basketRepository.Update(basket);

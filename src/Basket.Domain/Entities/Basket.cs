@@ -1,4 +1,5 @@
-﻿using Basket.Domain.Exceptions;
+﻿using Basket.Domain.Enum;
+using Basket.Domain.Exceptions;
 using Basket.Domain.Primitives;
 using CSharpFunctionalExtensions;
 
@@ -13,11 +14,13 @@ namespace Basket.Domain.Entities
         public string Country { get; private set; }
         public string SessionId { get; private set; }
 
+        public BasketStatus Status { get; private set; }
+
         public decimal TotalPrice { get; private set; }
 
         public IReadOnlyCollection<BasketItem> BasketItems => _items.AsReadOnly();
 
-        private Basket(Guid id, Guid userId, string currency, string country, string sessionId)
+        private Basket(Guid id, Guid userId, string currency, string country, string sessionId, BasketStatus status)
             : base(id)
         {
             if (userId == Guid.Empty) throw new ArgumentException("UserId cannot be empty.", nameof(userId));
@@ -30,11 +33,12 @@ namespace Basket.Domain.Entities
             Country = country;
             SessionId = sessionId;
             RecalculateTotal();
+            Status = status;
         }
 
-        public static Basket Create(Guid id, Guid userId, string currency, string country, string sessionId)
+        public static Basket Create(Guid id, Guid userId, string currency, string country, string sessionId, BasketStatus status)
         {
-            return new Basket(id, userId, currency, country, sessionId);
+            return new Basket(id, userId, currency, country, sessionId, status);
         }
 
         public void AddItem(BasketItem basketItem)
@@ -68,11 +72,9 @@ namespace Basket.Domain.Entities
             RecalculateTotal();
         }
 
-        public bool IsDeleted { get; private set; }
-
         public void Delete()
         {
-            IsDeleted = true;
+            Status = BasketStatus.Cancelled;
             foreach (var item in _items)
             {
                 item.Delete();
@@ -98,6 +100,8 @@ namespace Basket.Domain.Entities
             return Maybe.From(item);
         }
 
-        private void RecalculateTotal() => TotalPrice = _items.Where(i => !i.IsDeleted).Sum(i => i.TotalPrice);        
+        private void RecalculateTotal() => TotalPrice = _items
+            .Where(i => i.Status != BasketItemStatus.Cancelled)
+            .Sum(i => i.TotalPrice);
     }
 }

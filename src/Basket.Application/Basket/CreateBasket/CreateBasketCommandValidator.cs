@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
-using System;
+
 namespace Basket.Application.Basket.CreateBasket
 {
     internal class CreateBasketCommandValidator : AbstractValidator<CreateBasketCommand>
     {
         public CreateBasketCommandValidator()
         {
-            RuleFor(x => x.CreateBasketRequest.UserId)
+            RuleFor(x => x.CreateBasketRequest.Id)
                 .NotEmpty().WithMessage("UserId is required.");
 
             RuleFor(x => x.CreateBasketRequest.Currency)

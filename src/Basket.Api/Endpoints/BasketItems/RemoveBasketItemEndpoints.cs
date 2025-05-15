@@ -1,5 +1,4 @@
-﻿
-using Basket.Application.BasketItems.RemoveBasketItem;
+﻿using Basket.Application.BasketItems.RemoveBasketItem;
 using Basket.Contracts.Models.BasketItem.Output;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,4 +1,5 @@
 ﻿using Basket.Domain.Entities;
+using Basket.Domain.Enum;
 using Basket.Domain.Repositories;
 using Basket.Shared.CQRS;
 
@@ -11,10 +12,11 @@ namespace Basket.Application.Basket.CreateBasket
             var request = command.CreateBasketRequest;
             var basket = Domain.Entities.Basket.Create(
                 Guid.NewGuid(),
-                request.UserId,
+                request.Id,
                 request.Currency,
                 request.Country,
-                request.SessionId
+                request.SessionId,
+                BasketStatus.FromName(request.Status.ToString())
             );
 
             foreach (var item in request.BasketItems)
@@ -25,7 +27,8 @@ namespace Basket.Application.Basket.CreateBasket
                     item.ProductCode,
                     item.Color,
                     item.Price,
-                    item.Quantity
+                    item.Quantity,
+                    BasketItemStatus.FromName(item.Status.ToString())
                 );
 
                 basket.AddItem(basketItem);

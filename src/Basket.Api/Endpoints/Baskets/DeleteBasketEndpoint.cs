@@ -7,7 +7,7 @@ namespace Basket.Api.Endpoints.Baskets
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapDelete("/baskets/{id}", DeleteBasket)               
+            app.MapDelete("/baskets/{id}", DeleteBasket)
                 .WithSummary("Delete Basket")
                 .WithDescription("Delete Basket By Id")
                 .Produces<BasketDto>(StatusCodes.Status200OK)

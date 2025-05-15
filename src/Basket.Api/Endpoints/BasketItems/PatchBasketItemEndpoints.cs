@@ -1,8 +1,6 @@
-﻿
-using Basket.Application.BasketItems.UpdateBasketItem;
+﻿using Basket.Application.BasketItems.UpdateBasketItem;
 using Basket.Contracts.Models.BasketItem.Input;
 using Basket.Contracts.Models.BasketItem.Output;
-using Basket.Domain.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.Api.Endpoints.BasketItems

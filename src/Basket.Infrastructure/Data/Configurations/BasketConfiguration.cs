@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Basket.Domain.Enum;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 namespace Basket.Infrastructure.Data.Configurations
 {
     public class BasketConfiguration : IEntityTypeConfiguration<Domain.Entities.Basket>
@@ -18,23 +20,26 @@ namespace Basket.Infrastructure.Data.Configurations
             builder.Property(b => b.SessionId)
                 .IsRequired();
 
-
             builder.Property(b => b.TotalPrice)
                 .IsRequired();
 
-            builder.Property(b => b.IsDeleted).IsRequired();
+            builder.Navigation(b => b.BasketItems)
+                .UsePropertyAccessMode(PropertyAccessMode.Field)
+                .HasField("_items"); // Explicitly specify the field name
 
             builder.HasMany(b => b.BasketItems)
             .WithOne()
              .HasForeignKey(bi => bi.BasketId)
             .OnDelete(DeleteBehavior.Cascade);
 
-
-            builder.Navigation(b => b.BasketItems)
-            .UsePropertyAccessMode(PropertyAccessMode.Field)
-            .HasField("_items"); // Explicitly specify the field name
-
-            builder.HasQueryFilter(b => !b.IsDeleted);
+            builder.Property(o => o.Status)
+            .IsRequired()
+            .HasConversion(
+                status => status.Name,
+                name => BasketStatus.FromName(name, true)
+            )
+            .HasMaxLength(50)
+            .HasColumnName("Status");
         }
     }
 }

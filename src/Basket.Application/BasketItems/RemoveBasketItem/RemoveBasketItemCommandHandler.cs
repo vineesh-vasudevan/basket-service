@@ -34,7 +34,7 @@ namespace Basket.Application.BasketItems.RemoveBasketItem
             try
             {
                 basketRepository.Update(basket);
-                basketRepository.UpdateBasketItem(basketItem.Value); //TODO to remove 
+                basketRepository.UpdateBasketItem(basketItem.Value); //TODO to remove
                 await unitOfWork.SaveChangesAsync(cancellationToken);
                 await unitOfWork.CommitAsync(cancellationToken);
 

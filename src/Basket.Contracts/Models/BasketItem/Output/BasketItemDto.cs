@@ -1,11 +1,16 @@
-﻿namespace Basket.Contracts.Models.BasketItem.Output
+﻿using Basket.Contracts.Models.Common;
+
+namespace Basket.Contracts.Models.BasketItem.Output
 {
     public class BasketItemDto
     {
+        public Guid Id { get; set; } = default!;
+        public Guid BasketId { get; set; } = default!;
         public int Quantity { get; set; } = default!;
         public string Color { get; set; } = default!;
         public decimal Price { get; set; } = default!;
         public string ProductCode { get; set; } = default!;
         public decimal TotalPrice { get; set; } = default!;
+        public BasketItemStatusDto Status { get; init; }
     }
 }

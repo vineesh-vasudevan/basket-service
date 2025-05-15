@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Basket.Domain.Entities;
+using Basket.Domain.Enum;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Basket.Domain.Entities;
 
 namespace Basket.Infrastructure.Data.Configurations
 {
@@ -28,9 +29,16 @@ namespace Basket.Infrastructure.Data.Configurations
             builder.Property(bi => bi.TotalPrice)
                   .IsRequired();
 
-            builder.Property(i => i.IsDeleted).IsRequired();
+            builder.Property(o => o.Status)
+             .IsRequired()
+             .HasConversion(
+                 status => status.Name,
+                 name => BasketItemStatus.FromName(name, true)
+             )
+             .HasMaxLength(50)
+             .HasColumnName("Status");
 
-            builder.HasQueryFilter(i => !i.IsDeleted);
+            builder.HasQueryFilter(i => i.Status != BasketItemStatus.Cancelled);
         }
     }
 }

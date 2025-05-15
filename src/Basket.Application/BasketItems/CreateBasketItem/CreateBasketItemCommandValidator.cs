@@ -14,7 +14,6 @@ namespace Basket.Application.BasketItems.CreateBasketItem
 
             When(x => x.Request != null, () =>
             {
-
                 RuleFor(x => x.Request.ProductCode)
                 .NotEmpty().WithMessage("ProductCode is required.");
 

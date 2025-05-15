@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Basket.Contracts.Models.Basket.Output;
 using Basket.Contracts.Models.BasketItem.Output;
+using Basket.Contracts.Models.Common;
 using Basket.Domain.Entities;
 
 namespace Basket.Application.Common.Mapping
@@ -9,9 +10,13 @@ namespace Basket.Application.Common.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<BasketItem, BasketItemDto>();
+            CreateMap<BasketItem, BasketItemDto>()
+                  .ForMember(x => x.Status,
+                    o => o.MapFrom(s => Enum.Parse<BasketItemStatusDto>(s.Status.Name)));
 
             CreateMap<Domain.Entities.Basket, BasketDto>()
+                .ForMember(x => x.Status,
+                    o => o.MapFrom(s => Enum.Parse<BasketStatusDto>(s.Status.Name)))
                .ForMember(destination => destination.Items, opt => opt.MapFrom(src => src.BasketItems))
                .ForMember(destination => destination.TotalPrice, opt => opt.MapFrom(src => src.TotalPrice));
         }

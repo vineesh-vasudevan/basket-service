@@ -1,7 +1,7 @@
 ﻿using Basket.Domain.Entities;
 using Basket.Domain.Repositories;
 using Basket.Infrastructure.Dtos;
-using Basket.Infrastructure.Mappers;
+using Basket.Infrastructure.MappingProfile;
 using CSharpFunctionalExtensions;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
@@ -33,15 +33,15 @@ namespace Basket.Infrastructure.Repositories
             var cached = await cache.GetStringAsync(cacheKey, cancellationToken);
             if (!string.IsNullOrEmpty(cached))
             {
-                var cachedBasket = JsonSerializer.Deserialize<BasketDto>(cached);
-                var basket = BasketMapper.FromDto(cachedBasket!);
+                var cachedBasket = JsonSerializer.Deserialize<BasketCacheDto>(cached);
+                var basket = BasketCacheMapper.FromDto(cachedBasket!);
                 return Maybe.From(basket);
             }
 
             var basketFromDb = await basketRepository.GetBasket(id, cancellationToken);
             if (basketFromDb.HasValue)
             {
-                var basketToCache = BasketMapper.ToDto(basketFromDb.Value!);
+                var basketToCache = BasketCacheMapper.ToDto(basketFromDb.Value!);
                 var serialized = JsonSerializer.Serialize(basketToCache);
                 await cache.SetStringAsync(cacheKey, serialized, new DistributedCacheEntryOptions
                 {

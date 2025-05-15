@@ -1,4 +1,6 @@
-﻿namespace Basket.Contracts.Models.BasketItem.Input
+﻿using Basket.Contracts.Models.Common;
+
+namespace Basket.Contracts.Models.BasketItem.Input
 {
     public class BasketItemCreateRequestDto
     {
@@ -6,5 +8,6 @@
         public int Quantity { get; init; }
         public string Color { get; init; } = default!;
         public decimal Price { get; init; }
+        public BasketItemStatusDto Status { get; init; }
     }
 }

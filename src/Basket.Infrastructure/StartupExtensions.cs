@@ -1,9 +1,9 @@
-﻿using Basket.Infrastructure.Data;
+﻿using Basket.Domain.Repositories;
+using Basket.Infrastructure.Data;
 using Basket.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Basket.Domain.Repositories;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Basket.Infrastructure
 {
@@ -26,7 +26,6 @@ namespace Basket.Infrastructure
                 options.Configuration = redisConnection;
             });
 
-           
             return services;
         }
     }
