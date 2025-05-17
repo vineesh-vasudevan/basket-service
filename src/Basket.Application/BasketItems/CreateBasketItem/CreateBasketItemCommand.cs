@@ -1,4 +1,4 @@
-﻿using Basket.Contracts.Models.BasketItem.Input;
+﻿using Basket.Contracts.Dtos.BasketItem.Input;
 using Basket.Shared.CQRS;
 
 namespace Basket.Application.BasketItems.CreateBasketItem

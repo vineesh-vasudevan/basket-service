@@ -11,7 +11,7 @@ namespace Basket.Infrastructure.MappingProfile
             return new BasketCacheDto
             {
                 Id = basket.Id,
-                UserId = basket.UserId,
+                UserId = basket.CustomerId,
                 Currency = basket.Currency,
                 Country = basket.Country,
                 SessionId = basket.SessionId,

@@ -1,4 +1,4 @@
-﻿global using FluentValidation;
+﻿global using AutoMapper;
 global using Carter;
-global using AutoMapper;
+global using FluentValidation;
 global using MediatR;

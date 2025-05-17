@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Basket.Contracts.Models.Basket.Output;
+using Basket.Contracts.Dtos.Basket.Output;
 using Basket.Domain.Exceptions;
 using Basket.Domain.Repositories;
 using Basket.Shared.CQRS;

@@ -36,6 +36,9 @@ namespace Basket.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<Guid>("CustomerId")
+                        .HasColumnType("char(36)");
+
                     b.Property<string>("SessionId")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -48,9 +51,6 @@ namespace Basket.Infrastructure.Data.Migrations
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(65,30)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 

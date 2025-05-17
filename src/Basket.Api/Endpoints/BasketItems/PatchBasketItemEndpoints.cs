@@ -1,6 +1,6 @@
 ﻿using Basket.Application.BasketItems.UpdateBasketItem;
-using Basket.Contracts.Models.BasketItem.Input;
-using Basket.Contracts.Models.BasketItem.Output;
+using Basket.Contracts.Dtos.BasketItem.Input;
+using Basket.Contracts.Dtos.BasketItem.Output;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.Api.Endpoints.BasketItems

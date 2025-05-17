@@ -1,5 +1,5 @@
 ﻿using Basket.Application.BasketItems.RemoveBasketItem;
-using Basket.Contracts.Models.BasketItem.Output;
+using Basket.Contracts.Dtos.BasketItem.Output;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.Api.Endpoints.BasketItems

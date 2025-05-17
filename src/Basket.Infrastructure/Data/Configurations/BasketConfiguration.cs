@@ -11,6 +11,9 @@ namespace Basket.Infrastructure.Data.Configurations
             builder.ToTable("Basket");
             builder.HasKey(b => b.Id);
 
+            builder.Property(b => b.CustomerId)
+               .IsRequired();
+
             builder.Property(b => b.Currency)
                 .IsRequired();
 

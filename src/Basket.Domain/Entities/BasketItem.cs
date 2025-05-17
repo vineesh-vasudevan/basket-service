@@ -60,5 +60,10 @@ namespace Basket.Domain.Entities
         {
             Status = BasketItemStatus.Cancelled;
         }
+
+        public void Checkout()
+        {
+            Status = BasketItemStatus.CheckOut;
+        }
     }
 }

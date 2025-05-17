@@ -1,4 +1,4 @@
-﻿using Basket.Contracts.Models.BasketItem.Input;
+﻿using Basket.Contracts.Dtos.BasketItem.Input;
 using FluentValidation;
 
 namespace Basket.Application.Basket.CreateBasket

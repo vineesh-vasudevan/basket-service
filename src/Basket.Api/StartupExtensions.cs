@@ -2,6 +2,7 @@
 using Basket.Shared.Exceptions.Handler;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using RabbitMQ.Client;
 using Serilog;
 using System.Text.Json.Serialization;
 
@@ -9,10 +10,11 @@ namespace Basket.Api
 {
     public static class StartupExtensions
     {
+        private static readonly string[] tags = ["messagequeue"];
+
         public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration)
         {
             // Register services
-
             services.AddCarter();
 
             services.AddHttpContextAccessor();
@@ -28,12 +30,16 @@ namespace Basket.Api
             // Add Health Checks
             var dbConnection = configuration.GetConnectionString("BasketDb");
             var redisConnection = configuration.GetConnectionString("Redis");
+            var rabbitMqConnection = configuration.GetSection("MessageBroker")["Connection"];
 
-            services.AddHealthChecks();
             services.AddHealthChecks()
-                 .AddMySql(dbConnection!, name: "mysql");
-            services.AddHealthChecks()
-                 .AddRedis(redisConnection!, name: "redis");
+                 .AddMySql(dbConnection!, name: "MySql")
+                 .AddRabbitMQ(sp =>
+                 {
+                     var factory = new ConnectionFactory { Uri = new Uri(rabbitMqConnection!) };
+                     return factory.CreateConnectionAsync();
+                 }, name: "RabbitMQ", tags: tags)
+                 .AddRedis(redisConnection!, name: "Redis");
 
             return services;
         }

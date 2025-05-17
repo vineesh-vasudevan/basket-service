@@ -1,4 +1,4 @@
-﻿using Basket.Contracts.Models.Basket.Output;
+﻿using Basket.Contracts.Dtos.Basket.Output;
 using Basket.Shared.CQRS;
 
 namespace Basket.Application.BasketItems.RemoveBasketItem

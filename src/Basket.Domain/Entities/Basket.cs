@@ -9,7 +9,7 @@ namespace Basket.Domain.Entities
     {
         private readonly List<BasketItem> _items = [];
 
-        public Guid UserId { get; private set; }
+        public Guid CustomerId { get; private set; }
         public string Currency { get; private set; }
         public string Country { get; private set; }
         public string SessionId { get; private set; }
@@ -20,15 +20,15 @@ namespace Basket.Domain.Entities
 
         public IReadOnlyCollection<BasketItem> BasketItems => _items.AsReadOnly();
 
-        private Basket(Guid id, Guid userId, string currency, string country, string sessionId, BasketStatus status)
+        private Basket(Guid id, Guid customerId, string currency, string country, string sessionId, BasketStatus status)
             : base(id)
         {
-            if (userId == Guid.Empty) throw new ArgumentException("UserId cannot be empty.", nameof(userId));
+            if (customerId == Guid.Empty) throw new ArgumentException("CustomerId cannot be empty.", nameof(customerId));
             if (string.IsNullOrWhiteSpace(currency)) throw new ArgumentException("Currency cannot be empty.", nameof(currency));
             if (string.IsNullOrWhiteSpace(country)) throw new ArgumentException("Country cannot be empty.", nameof(country));
             if (string.IsNullOrWhiteSpace(sessionId)) throw new ArgumentException("SessionId cannot be empty.", nameof(sessionId));
 
-            UserId = userId;
+            CustomerId = customerId;
             Currency = currency;
             Country = country;
             SessionId = sessionId;
@@ -36,9 +36,9 @@ namespace Basket.Domain.Entities
             Status = status;
         }
 
-        public static Basket Create(Guid id, Guid userId, string currency, string country, string sessionId, BasketStatus status)
+        public static Basket Create(Guid id, Guid customerId, string currency, string country, string sessionId, BasketStatus status)
         {
-            return new Basket(id, userId, currency, country, sessionId, status);
+            return new Basket(id, customerId, currency, country, sessionId, status);
         }
 
         public void AddItem(BasketItem basketItem)
@@ -103,5 +103,14 @@ namespace Basket.Domain.Entities
         private void RecalculateTotal() => TotalPrice = _items
             .Where(i => i.Status != BasketItemStatus.Cancelled)
             .Sum(i => i.TotalPrice);
+
+        public void Checkout()
+        {
+            Status = BasketStatus.CheckOut;
+            foreach (var item in _items)
+            {
+                item.Checkout();
+            }
+        }
     }
 }
