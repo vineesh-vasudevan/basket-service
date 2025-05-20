@@ -1,9 +1,4 @@
-﻿using Basket.Domain.Entities;
-using Basket.Domain.Enum;
-using Basket.Domain.Repositories;
-using Basket.Shared.CQRS;
-
-namespace Basket.Application.Basket.CreateBasket
+﻿namespace Basket.Application.Basket.CreateBasket
 {
     public class CreateBasketCommandHandler(IBasketRepository basketRepository, IUnitOfWork unitOfWork) : ICommandHandler<CreateBasketCommand, Guid>
     {

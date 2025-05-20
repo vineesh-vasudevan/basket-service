@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using Basket.CheckOutEvent;
-using Basket.Contracts.Dtos.Common;
-using Basket.Domain.Entities;
+﻿using Basket.Contracts.Dtos.Common;
 
 namespace Basket.Application.MappingProfile
 {

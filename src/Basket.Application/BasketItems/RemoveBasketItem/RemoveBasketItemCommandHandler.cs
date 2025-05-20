@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using Basket.Contracts.Dtos.Basket.Output;
-using Basket.Domain.Exceptions;
-using Basket.Domain.Repositories;
-using Basket.Shared.CQRS;
-
-namespace Basket.Application.BasketItems.RemoveBasketItem
+﻿namespace Basket.Application.BasketItems.RemoveBasketItem
 {
     public class RemoveBasketItemCommandHandler
         (IBasketRepository basketRepository, IUnitOfWork unitOfWork, IMapper mapper)

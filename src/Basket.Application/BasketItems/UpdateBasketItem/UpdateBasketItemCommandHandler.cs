@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using Basket.Contracts.Dtos.Basket.Output;
-using Basket.Domain.Exceptions;
-using Basket.Domain.Repositories;
-using Basket.Shared.CQRS;
-
-namespace Basket.Application.BasketItems.UpdateBasketItem
+﻿namespace Basket.Application.BasketItems.UpdateBasketItem
 {
     public class UpdateBasketItemCommandHandler
         (IBasketRepository basketRepository, IUnitOfWork unitOfWork, IMapper mapper)

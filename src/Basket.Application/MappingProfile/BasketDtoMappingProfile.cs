@@ -1,8 +1,5 @@
-﻿using AutoMapper;
-using Basket.Contracts.Dtos.Basket.Output;
-using Basket.Contracts.Dtos.BasketItem.Output;
+﻿using Basket.Contracts.Dtos.BasketItem.Output;
 using Basket.Contracts.Dtos.Common;
-using Basket.Domain.Entities;
 
 namespace Basket.Application.MappingProfile
 {

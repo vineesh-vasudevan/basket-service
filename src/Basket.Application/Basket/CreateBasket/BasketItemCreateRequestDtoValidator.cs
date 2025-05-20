@@ -1,7 +1,4 @@
-﻿using Basket.Contracts.Dtos.BasketItem.Input;
-using FluentValidation;
-
-namespace Basket.Application.Basket.CreateBasket
+﻿namespace Basket.Application.Basket.CreateBasket
 {
     public class BasketItemCreateRequestDtoValidator : AbstractValidator<BasketItemCreateRequestDto>
     {

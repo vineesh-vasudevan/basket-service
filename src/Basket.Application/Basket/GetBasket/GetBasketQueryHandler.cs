@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using Basket.Contracts.Dtos.Basket.Output;
-using Basket.Domain.Exceptions;
-using Basket.Domain.Repositories;
-using Basket.Shared.CQRS;
-
-namespace Basket.Application.Basket.GetBasket
+﻿namespace Basket.Application.Basket.GetBasket
 {
     public class GetBasketQueryHandler(IBasketRepository basketRepository, IMapper mapper) : IQueryHandler<GetBasketQuery, BasketDto>
     {

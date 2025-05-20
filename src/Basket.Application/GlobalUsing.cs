@@ -1,0 +1,12 @@
+﻿global using AutoMapper;
+global using Basket.CheckOutEvent;
+global using Basket.Contracts.Dtos.Basket.Input;
+global using Basket.Contracts.Dtos.Basket.Output;
+global using Basket.Contracts.Dtos.BasketCheckout;
+global using Basket.Contracts.Dtos.BasketItem.Input;
+global using Basket.Domain.Entities;
+global using Basket.Domain.Enum;
+global using Basket.Domain.Exceptions;
+global using Basket.Domain.Repositories;
+global using Basket.Shared.CQRS;
+global using FluentValidation;

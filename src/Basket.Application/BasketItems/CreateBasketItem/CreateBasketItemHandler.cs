@@ -1,10 +1,4 @@
-﻿using Basket.Domain.Entities;
-using Basket.Domain.Enum;
-using Basket.Domain.Exceptions;
-using Basket.Domain.Repositories;
-using Basket.Shared.CQRS;
-
-namespace Basket.Application.BasketItems.CreateBasketItem
+﻿namespace Basket.Application.BasketItems.CreateBasketItem
 {
     public class CreateBasketItemHandler
         (IBasketRepository basketRepository, IUnitOfWork unitOfWork)

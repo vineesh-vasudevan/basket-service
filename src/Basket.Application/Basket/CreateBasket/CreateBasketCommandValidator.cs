@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace Basket.Application.Basket.CreateBasket
+﻿namespace Basket.Application.Basket.CreateBasket
 {
     internal class CreateBasketCommandValidator : AbstractValidator<CreateBasketCommand>
     {

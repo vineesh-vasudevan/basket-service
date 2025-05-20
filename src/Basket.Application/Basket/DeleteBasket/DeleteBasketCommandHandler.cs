@@ -1,8 +1,4 @@
-﻿using Basket.Domain.Exceptions;
-using Basket.Domain.Repositories;
-using Basket.Shared.CQRS;
-
-namespace Basket.Application.Basket.DeleteBasket
+﻿namespace Basket.Application.Basket.DeleteBasket
 {
     public class DeleteBasketCommandHandler(IBasketRepository basketRepository, IUnitOfWork unitOfWork)
         : ICommandHandler<DeleteBasketCommand, bool>

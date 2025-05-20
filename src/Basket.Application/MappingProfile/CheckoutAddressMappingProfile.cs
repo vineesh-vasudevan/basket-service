@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using Basket.CheckOutEvent;
-using Basket.Contracts.Dtos.BasketCheckout;
-
-namespace Basket.Application.MappingProfile
+﻿namespace Basket.Application.MappingProfile
 {
     public class CheckoutAddressMappingProfile : Profile
     {

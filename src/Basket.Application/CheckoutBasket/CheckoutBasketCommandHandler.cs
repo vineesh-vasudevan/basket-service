@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using Basket.CheckOutEvent;
-using Basket.Domain.Exceptions;
-using Basket.Domain.Messaging;
-using Basket.Domain.Repositories;
-using Basket.Shared.CQRS;
+﻿using Basket.Domain.Messaging;
 
 namespace Basket.Application.CheckoutBasket
 {

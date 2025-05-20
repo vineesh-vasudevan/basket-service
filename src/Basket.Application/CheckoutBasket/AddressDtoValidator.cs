@@ -1,7 +1,4 @@
-﻿using Basket.Contracts.Dtos.BasketCheckout;
-using FluentValidation;
-
-namespace Basket.Application.CheckoutBasket
+﻿namespace Basket.Application.CheckoutBasket
 {
     public class AddressDtoValidator : AbstractValidator<AddressDto>
     {
