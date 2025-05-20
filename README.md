@@ -86,17 +86,10 @@ docker-compose up --build
 ## 📈 Planned Improvements
 
 - 🔐 **Authentication & Authorization**
-
   - Integrate JWT or API key-based security for gRPC endpoints to protect the service.
-
 - 🔁 **Retry & Circuit Breaker Policies**
-
   - Implement Retry and Circuit Breaker policies with Polly
-
 - 🗃️ **Unit & Integration Tests improvements**
-
   - Increase Unit Testing & Integration Testing Coverage
-
-- 📤 Outbox Pattern
-
+- 📤 **Outbox Pattern**
   - Implement the Outbox Pattern using EF Core and MassTransit to ensure reliable event publishing:
