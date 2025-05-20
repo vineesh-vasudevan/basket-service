@@ -1,4 +1,4 @@
-﻿{
+{
   "profiles": {
     "http": {
       "commandName": "Project",
@@ -42,8 +42,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:55495",
-      "sslPort": 44334
+      "applicationUrl": "http://localhost:57510/",
+      "sslPort": 44372
     }
   }
 }

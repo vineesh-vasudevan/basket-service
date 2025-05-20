@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
+using Basket.CheckOutEvent;
 using Basket.Contracts.Dtos.Common;
-using Basket.Contracts.Events;
 using Basket.Domain.Entities;
 
 namespace Basket.Application.MappingProfile
 {
-    public class BasketItemMappingProfile : Profile
+    public class BasketItemEventMappingProfile : Profile
     {
-        public BasketItemMappingProfile()
+        public BasketItemEventMappingProfile()
         {
             CreateMap<BasketItem, BasketItemEvent>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(src => src.Id))

@@ -46,5 +46,7 @@ namespace Basket.Mocks.Dtos
                 Country = _country
             };
         }
+
+        public static AddressDto Default() => new AddressDtoBuilder().Build();
     }
 }

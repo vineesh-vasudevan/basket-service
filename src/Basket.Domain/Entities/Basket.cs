@@ -106,7 +106,7 @@ namespace Basket.Domain.Entities
 
         public void Checkout()
         {
-            Status = BasketStatus.CheckOut;
+            Status = BasketStatus.CheckedOut;
             foreach (var item in _items)
             {
                 item.Checkout();

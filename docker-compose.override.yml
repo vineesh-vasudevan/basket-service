@@ -37,9 +37,13 @@ services:
       - ASPNETCORE_HTTPS_PORTS=8081
       - ConnectionStrings__BasketDb=Server=basketdb;Port=3306;Database=BasketDb;User=basketuser;Password=basketpass;SslMode=Preferred;
       - ConnectionStrings__Redis=distributedcache:6379
+      - MessageBroker__Host=amqp://ecommerce-mq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
     depends_on:
       - basketdb
       - distributedcache
+      - messagebroker
     ports:
       - "6001:8080"
       - "6061:8081"

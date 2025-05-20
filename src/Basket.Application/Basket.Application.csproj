@@ -12,4 +12,8 @@
     <ProjectReference Include="..\Basket.Shared\Basket.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Basket.CheckOutEvent" Version="1.0.2" />
+  </ItemGroup>
+
 </Project>

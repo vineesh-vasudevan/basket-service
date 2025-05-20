@@ -41,5 +41,7 @@ namespace Basket.Mocks.Dtos
                 TransactionId = _transactionId
             };
         }
+
+        public static PaymentDto Default() => new PaymentDtoBuilder().Build();
     }
 }

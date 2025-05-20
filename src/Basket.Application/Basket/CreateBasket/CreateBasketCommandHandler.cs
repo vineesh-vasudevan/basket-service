@@ -12,7 +12,7 @@ namespace Basket.Application.Basket.CreateBasket
             var request = command.CreateBasketRequest;
             var basket = Domain.Entities.Basket.Create(
                 Guid.NewGuid(),
-                request.Id,
+                request.CustomerId,
                 request.Currency,
                 request.Country,
                 request.SessionId,

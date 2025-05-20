@@ -63,7 +63,7 @@ namespace Basket.Domain.Entities
 
         public void Checkout()
         {
-            Status = BasketItemStatus.CheckOut;
+            Status = BasketItemStatus.CheckedOut;
         }
     }
 }

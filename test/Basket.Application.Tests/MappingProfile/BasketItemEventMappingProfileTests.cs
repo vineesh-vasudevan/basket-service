@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Basket.Application.MappingProfile;
-using Basket.Contracts.Dtos.Common;
-using Basket.Contracts.Events;
+using Basket.CheckOutEvent;
 using Basket.Domain.Entities;
 using Basket.Domain.Enum;
 using FluentAssertions;
@@ -9,7 +8,7 @@ using FluentAssertions;
 namespace Basket.Application.Tests.MappingProfile
 {
     [TestFixture]
-    public class BasketItemMappingProfileTests
+    public class BasketItemEventMappingProfileTests
     {
         private IMapper _mapper;
 
@@ -18,7 +17,7 @@ namespace Basket.Application.Tests.MappingProfile
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile<BasketItemMappingProfile>();
+                cfg.AddProfile<BasketItemEventMappingProfile>();
             });
 
             _mapper = config.CreateMapper();
@@ -51,7 +50,7 @@ namespace Basket.Application.Tests.MappingProfile
             eventItem.Color.Should().Be("Red");
             eventItem.Price.Should().Be(99.99m);
             eventItem.Quantity.Should().Be(2);
-            eventItem.Status.Should().Be(BasketItemStatusDto.Active);
+            eventItem.Status.Should().Be(CheckoutItemStatus.Active);
         }
     }
 }

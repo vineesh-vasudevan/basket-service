@@ -4,11 +4,11 @@ using Basket.Contracts.Dtos.BasketItem.Output;
 using Basket.Contracts.Dtos.Common;
 using Basket.Domain.Entities;
 
-namespace Basket.Application.Common.Mapping
+namespace Basket.Application.MappingProfile
 {
-    public class MappingProfile : Profile
+    public class BasketDtoMappingProfile : Profile
     {
-        public MappingProfile()
+        public BasketDtoMappingProfile()
         {
             CreateMap<BasketItem, BasketItemDto>()
                   .ForMember(x => x.Status,

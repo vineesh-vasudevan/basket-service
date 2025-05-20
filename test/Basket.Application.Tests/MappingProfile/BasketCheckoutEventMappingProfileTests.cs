@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Basket.Application.MappingProfile;
-using Basket.Contracts.Dtos.Common;
-using Basket.Contracts.Events;
+using Basket.CheckOutEvent;
 using Basket.Mocks.Domain;
 using Basket.Mocks.Dtos;
 using FluentAssertions;
@@ -9,7 +8,7 @@ using FluentAssertions;
 namespace Basket.Application.Tests.MappingProfile
 {
     [TestFixture]
-    public class BasketMappingProfileTests
+    public class BasketCheckoutEventMappingProfileTests
     {
         private IMapper _mapper;
 
@@ -18,8 +17,10 @@ namespace Basket.Application.Tests.MappingProfile
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile<BasketItemMappingProfile>();
-                cfg.AddProfile<BasketMappingProfile>();
+                cfg.AddProfile<BasketItemEventMappingProfile>();
+                cfg.AddProfile<BasketCheckoutEventMappingProfile>();
+                cfg.AddProfile<CheckoutPaymentMappingProfile>();
+                cfg.AddProfile<CheckoutAddressMappingProfile>();
             });
 
             _mapper = config.CreateMapper();
@@ -55,7 +56,7 @@ namespace Basket.Application.Tests.MappingProfile
             result.BasketId.Should().Be(basket.Id);
             result.CustomerId.Should().Be(basket.CustomerId);
             result.OrderName.Should().Be(basketCheckoutDto.OrderName);
-            result.Status.Should().Be((BasketStatusDto)basket.Status.Value);
+            result.Status.Should().Be((BasketCheckoutStatus)basket.Status.Value);
             result.ShippingAddress.Should().BeEquivalentTo(basketCheckoutDto.ShippingAddress);
             result.BillingAddress.Should().BeEquivalentTo(basketCheckoutDto.BillingAddress);
             result.Payment.Should().BeEquivalentTo(basketCheckoutDto.Payment);

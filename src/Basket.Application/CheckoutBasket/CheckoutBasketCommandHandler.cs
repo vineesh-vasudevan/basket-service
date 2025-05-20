@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Basket.Contracts.Events;
+using Basket.CheckOutEvent;
 using Basket.Domain.Exceptions;
 using Basket.Domain.Messaging;
 using Basket.Domain.Repositories;

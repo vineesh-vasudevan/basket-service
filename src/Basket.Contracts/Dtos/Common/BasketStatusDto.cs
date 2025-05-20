@@ -3,7 +3,7 @@
     public enum BasketStatusDto
     {
         Active,
-        CheckedOut,
-        Cancelled
+        Cancelled,
+        CheckedOut
     }
 }

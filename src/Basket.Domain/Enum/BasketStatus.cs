@@ -6,6 +6,6 @@ namespace Basket.Domain.Enum
     {
         public static readonly BasketStatus Active = new(nameof(Active), 0);
         public static readonly BasketStatus Cancelled = new(nameof(Cancelled), 1);
-        public static readonly BasketStatus CheckOut = new(nameof(CheckOut), 1);
+        public static readonly BasketStatus CheckedOut = new(nameof(CheckedOut), 1);
     }
 }

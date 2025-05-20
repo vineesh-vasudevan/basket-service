@@ -11,7 +11,7 @@ namespace Basket.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             var assembly = typeof(CreateBasketCommand).Assembly;
-            services.AddAutoMapper(typeof(BasketItemMappingProfile).Assembly);
+            services.AddAutoMapper(typeof(BasketItemEventMappingProfile).Assembly);
             services.AddValidatorsFromAssembly(assembly);
             services.AddMediatR(config =>
             {
