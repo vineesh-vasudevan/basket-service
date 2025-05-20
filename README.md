@@ -10,6 +10,7 @@ A modern and scalable **Basket Microservice** built with **ASP.NET Core 8** usin
 - ✅ **CQRS** with MediatR for command/query separation
 - ✅ **Clean Architecture** for maintainability and testability
 - ✅ **Redis** for distributed caching using **Cache-aside**, **Decorator**, and **Proxy** patterns
+- ✅ **Scrutor** for applying the Decorator pattern via dependency injection
 - ✅ **gRPC client** to consume Discount Microservice for price calculation
 - ✅ **MassTransit with RabbitMQ** to publish `BasketCheckout` events
 - ✅ **Carter** for minimal REST API endpoints
@@ -27,9 +28,10 @@ This Basket Microservice follows an N-Tier architecture, incorporating some prin
 2.  **Application Layer** → Implements the core application logic using the CQRS pattern (Commands, Queries, and Handlers) facilitated by MediatR for in-process messaging.
 3.  **Domain Layer** → Contains the central `Basket` entity and encapsulates core business rules and logic, independent of any specific framework or infrastructure.
 4.  **Infrastructure Layer** → Handles interactions with external systems:
-    - EF Core → Manages data persistence with the MySQL database.
-    - Redis → Implements distributed caching for basket data to improve performance and scalability.
-    - RabbitMQ → Facilitates asynchronous communication, particularly for publishing `BasketCheckoutEvent` upon successful checkout.
+    - **EF Core** → Manages data persistence with the MySQL database.
+    - **Redis** → Implements distributed caching for basket data to improve performance and scalability.
+    - **RabbitMQ** → Facilitates asynchronous communication, particularly for publishing `BasketCheckoutEvent` upon successful checkout.
+    - **Scrutor** → Simplifies the registration of decorators in the DI container, enabling clean application of the Decorator pattern for cache.
 5.  **Contracts Layer** → Defines Data Transfer Objects (DTOs) used for communication between different layers and potentially other microservices. This ensures a consistent data structure across the application.
 6.  **Shared Layer** → Contains common utilities and reusable components such as:
     - Behaviors → Implements MediatR pipeline behaviors for cross-cutting concerns.
