@@ -1,7 +1,4 @@
 ﻿using Basket.Application.BasketItems.UpdateBasketItem;
-using Basket.Contracts.Dtos.BasketItem.Input;
-using Basket.Contracts.Dtos.BasketItem.Output;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.Api.Endpoints.BasketItems
 {
@@ -10,7 +7,7 @@ namespace Basket.Api.Endpoints.BasketItems
         public void AddRoutes(IEndpointRouteBuilder app)
         {
             app.MapMethods("/baskets/{basketId:guid}/items/{itemId:guid}", ["PATCH"], PatchBasketItem)
-               .Produces<BasketItemDto>(StatusCodes.Status204NoContent)
+               .Produces<BasketDto>(StatusCodes.Status200OK)
                .ProducesProblem(StatusCodes.Status400BadRequest)
                .ProducesProblem(StatusCodes.Status404NotFound)
                .WithSummary("Update Basket Item")

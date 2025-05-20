@@ -1,6 +1,4 @@
 ﻿using Basket.Application.Basket.CreateBasket;
-using Basket.Contracts.Dtos.Basket.Input;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.Api.Endpoints.Baskets
 {

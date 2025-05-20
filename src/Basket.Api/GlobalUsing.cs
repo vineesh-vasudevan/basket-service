@@ -1,4 +1,10 @@
 ﻿global using AutoMapper;
+global using Basket.Contracts.Dtos.Basket.Input;
+global using Basket.Contracts.Dtos.Basket.Output;
+global using Basket.Contracts.Dtos.BasketCheckout;
+global using Basket.Contracts.Dtos.BasketItem.Input;
+global using Basket.Contracts.Dtos.BasketItem.Output;
 global using Carter;
 global using FluentValidation;
 global using MediatR;
+global using Microsoft.AspNetCore.Mvc;

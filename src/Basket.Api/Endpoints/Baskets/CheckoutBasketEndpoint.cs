@@ -1,6 +1,4 @@
 ﻿using Basket.Application.CheckoutBasket;
-using Basket.Contracts.Dtos.BasketCheckout;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.Api.Endpoints.Baskets
 {

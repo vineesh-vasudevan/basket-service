@@ -1,6 +1,4 @@
 ﻿using Basket.Application.BasketItems.RemoveBasketItem;
-using Basket.Contracts.Dtos.BasketItem.Output;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.Api.Endpoints.BasketItems
 {

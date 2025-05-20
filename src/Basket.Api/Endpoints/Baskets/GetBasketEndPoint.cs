@@ -1,5 +1,4 @@
 ﻿using Basket.Application.Basket.GetBasket;
-using Basket.Contracts.Dtos.Basket.Output;
 
 namespace Basket.Api.Endpoints.Baskets
 {

@@ -1,6 +1,4 @@
 ﻿using Basket.Application.BasketItems.CreateBasketItem;
-using Basket.Contracts.Dtos.BasketItem.Input;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.Api.Endpoints.BasketItems
 {
